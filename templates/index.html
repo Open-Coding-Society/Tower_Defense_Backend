@@ -1,0 +1,45 @@
+{% extends "layouts/base.html" %}
+{% set project = "Home" %}
+
+{% block body %}
+    <!-- Start of body content specific to page -->
+    <div class="px-5 py-5 mx-auto">
+        <h1 class="text-white"><strong>Genome Gamers Admin Page</strong></h1>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ url_for('static', filename='assets/image.png') }}" alt="Python Development" height="250">
+                    <div class="card-body">
+                    <h5 class="card-title">What is this project about?</h5>
+                    <p class="card-text">
+                        <ol>
+                            <li>A project for under management for PilotCity, which is a platform to help with securing internships.</li>
+                            <li>A project that follows Scripps Research requirements for building a biotech game highlighting their achievements.</li>
+                            <li>A project that highlights our team's love for video games in an adventure-type game with numerous video games about different topics related to biotech in Scripps Research.</li>
+                            <li>A project that incorporates ML models from datasets for each minigame requiring them, enhancing the user experience.</li>
+                        </ol>
+                    </p>
+                    <a href="https://prad-coder.github.io/GenomeGamersFrontend/" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card" style="background-color: cyan;">
+                    <img class="card-img-top" src="{{ url_for('static', filename='assets/csp1.jpg') }}" alt="User Management" style="width: 60%; height: 200px; margin: auto;">
+                    <div class="card-body">
+                    <h5 class="card-title">User Management</h5>
+                    <p class="card-text">
+                        <ol>
+                            <li>Manage user accounts and permissions.</li>
+                            <li>View user activity and logs.</li>
+                            <li>Reset passwords and update user information.</li>
+                            <li>Ensure user data security and privacy.</li>
+                        </ol>
+                    </p>
+                    <a href="/users/table" class="btn btn-primary">Manage Users</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
