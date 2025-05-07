@@ -9,7 +9,6 @@ from flask_login import current_user, login_required
 from flask import current_app
 from werkzeug.security import generate_password_hash
 import shutil
-from api.outbreak import outbreak_api
 
 
 # import "objects" from "this" project
@@ -26,10 +25,8 @@ from api.nestPost import nestPost_api # Justin added this, custom format for his
 from api.messages_api import messages_api # Adi added this, messages for his website
 from api.carphoto import car_api
 from api.carChat import car_chat_api
+from api.coins import coins_api
 # from api.titanic import titanic_api
-from api.points import points_api
-from api.editing import editing_api
-from api.mutations import mutations_api
 
 from api.vote import vote_api
 # database Initialization functions
@@ -41,10 +38,7 @@ from model.channel import Channel, initChannels
 from model.post import Post, initPosts
 from model.nestPost import NestPost, initNestPosts # Justin added this, custom format for his website
 from model.vote import Vote, initVotes
-from model.titanic import TitanicModel, initTitanic
-from model.points import Points, initPoints
-from model.editing import model
-from model.mutations import model
+from model.coins import Coins
 # server only Views
 
 # register URIs for api endpoints
@@ -61,11 +55,7 @@ app.register_blueprint(nestPost_api)
 app.register_blueprint(nestImg_api)
 app.register_blueprint(vote_api)
 app.register_blueprint(car_api)
-# app.register_blueprint(titanic_api)
-app.register_blueprint(points_api)
-app.register_blueprint(editing_api)
-app.register_blueprint(mutations_api)
-app.register_blueprint(outbreak_api, url_prefix='/api')
+app.register_blueprint(coins_api)
 
 # Tell Flask-Login the view function name of your login route
 login_manager.login_view = "login"
@@ -166,8 +156,6 @@ custom_cli = AppGroup('custom', help='Custom commands')
 @custom_cli.command('generate_data')
 def generate_data():
     initUsers()
-    initPoints()
-    initTitanic()  # Initialize Titanic data
     initSections()
     initGroups()
     initChannels()
@@ -193,11 +181,9 @@ def extract_data():
         data['users'] = [user.read() for user in User.query.all()]
         data['sections'] = [section.read() for section in Section.query.all()]
         data['groups'] = [group.read() for group in Group.query.all()]
-        data['points'] = [points.read() for points in Points.query.all()]
         data['channels'] = [channel.read() for channel in Channel.query.all()]
+        data['coins'] = [coins.read() for coins in Coins.query.all()]
         data['posts'] = [post.read() for post in Post.query.all()]
-        data['editing'] = [editing.read() for editing in model.query.all()]
-        data['mutations'] = [mutations.read() for mutations in model.query.all()]
     return data
 
 # Save extracted data to JSON files
@@ -222,9 +208,7 @@ def restore_data(data):
     with app.app_context():
         users = User.restore(data['users'])
         _ = Section.restore(data['sections'])
-        _ = Points.restore(data['points'])
-        _ = model.restore(data['editing'])
-        _ = model.restore(data['mutations'])
+        _ = Coins.restore(data['coins'])
         _ = Group.restore(data['groups'], users)
         _ = Channel.restore(data['channels'])
         _ = Post.restore(data['posts'])
