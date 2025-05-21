@@ -25,7 +25,7 @@ from api.nestPost import nestPost_api # Justin added this, custom format for his
 from api.messages_api import messages_api # Adi added this, messages for his website
 from api.carphoto import car_api
 from api.carChat import car_chat_api
-from api.coins import coins_api
+from api.points import points_api
 # from api.titanic import titanic_api
 
 from api.vote import vote_api
@@ -38,7 +38,7 @@ from model.channel import Channel, initChannels
 from model.post import Post, initPosts
 from model.nestPost import NestPost, initNestPosts # Justin added this, custom format for his website
 from model.vote import Vote, initVotes
-from model.coins import Coins
+from model.points import Points
 # server only Views
 
 # register URIs for api endpoints
@@ -55,7 +55,7 @@ app.register_blueprint(nestPost_api)
 app.register_blueprint(nestImg_api)
 app.register_blueprint(vote_api)
 app.register_blueprint(car_api)
-app.register_blueprint(coins_api)
+app.register_blueprint(points_api)
 
 # Tell Flask-Login the view function name of your login route
 login_manager.login_view = "login"
@@ -182,7 +182,7 @@ def extract_data():
         data['sections'] = [section.read() for section in Section.query.all()]
         data['groups'] = [group.read() for group in Group.query.all()]
         data['channels'] = [channel.read() for channel in Channel.query.all()]
-        data['coins'] = [coins.read() for coins in Coins.query.all()]
+        data['points'] = [points.read() for points in Points.query.all()]
         data['posts'] = [post.read() for post in Post.query.all()]
     return data
 
@@ -208,10 +208,10 @@ def restore_data(data):
     with app.app_context():
         users = User.restore(data['users'])
         _ = Section.restore(data['sections'])
-        _ = Coins.restore(data['coins'])
         _ = Group.restore(data['groups'], users)
         _ = Channel.restore(data['channels'])
         _ = Post.restore(data['posts'])
+        _ = Points.restore(data['points'])
     print("Data restored to the new database.")
 
 # Define a command to backup data
