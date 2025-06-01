@@ -1,14 +1,14 @@
 server {
     listen 80;
     listen [::]:80;
-    server_name flocker.nighthawkcodingsociety.com ; # Change server name to the one on R53
+    server_name tower-defense.opencodingsociety.com ; # Change server name to the one on R53
     # Configure CORS Headers
     location / { 
-        proxy_pass http://localhost:8887; # Change port to port on docker
+        proxy_pass http://localhost:3168; # Change port to port on docker
         # Preflighted requests 
         if ($request_method = OPTIONS ) {
                 add_header "Access-Control-Allow-Credentials" "true" always;
-                add_header "Access-Control-Allow-Origin"  "https://rayhaansheeraj.github.io" always;
+                add_header "Access-Control-Allow-Origin"  "https://opencodingsociety.github.io" always;
                 add_header "Access-Control-Allow-Methods" "GET, POST, PUT, DELETE, OPTIONS, HEAD"; # Make sure the request methods above match here
                 add_header "Access-Control-Allow-MaxAge" 600 always;
                 add_header "Access-Control-Allow-Headers" "Authorization, Origin, X-Requested-With, Content-Type, Accept, x-origin";
