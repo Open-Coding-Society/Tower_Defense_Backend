@@ -1,4 +1,4 @@
-version: '3'
+version: '3.12.3'
 services:
         web:
                 image: flask_2025
