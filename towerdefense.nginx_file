@@ -1,7 +1,7 @@
 server {
     listen 80;
     listen [::]:80;
-    server_name tower-defense.opencodingsociety.com ; # Change server name to the one on R53
+    server_name tower-defense.opencodingsociety.com; # Change server name to the one on R53
     # Configure CORS Headers
     location / { 
         proxy_pass http://localhost:3168; # Change port to port on docker
