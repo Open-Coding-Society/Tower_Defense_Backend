@@ -1,7 +1,7 @@
 server {
         listen 80;
         listen [::]:80;
-        server_name tower-defense.opencodingsociety.com;
+        server_name towerdefense.opencodingsociety.com;
 
         location / {
                 proxy_pass http://localhost:3168;
