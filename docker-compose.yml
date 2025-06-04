@@ -1,6 +1,6 @@
 services:
         web:
-                image: Tower Defense
+                image: tower-defense
                 build: .
                 env_file:
                         - .env # This file is optional; defaults will be used if it does not exist
