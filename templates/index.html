@@ -4,22 +4,56 @@
 {% block body %}
     <!-- Start of body content specific to page -->
     <div class="px-5 py-5 mx-auto">
-        <h1 class="text-white"><strong>Genome Gamers Admin Page</strong></h1>
-        <div class="row justify-content-center">
+        <h1 class="text-white"><strong>Tower Defense Admin Page</strong></h1>
+        <div class="row justify-content-center align-items-start">
             <div class="col-4">
                 <div class="card">
-                    <img class="card-img-top" src="{{ url_for('static', filename='assets/image.png') }}" alt="Python Development" height="250">
+                    <img class="card-img-top" src="{{ url_for('static', filename='assets/image.png') }}" alt="Tower Defense Game" style="display: block; margin: 0 auto; max-width: 100%; height: auto; width: auto;">
                     <div class="card-body">
-                    <h5 class="card-title">What is this project about?</h5>
+                    <h5 class="card-title">Tower Defense</h5>
                     <p class="card-text">
-                        <ol>
-                            <li>A project for under management for PilotCity, which is a platform to help with securing internships.</li>
-                            <li>A project that follows Scripps Research requirements for building a biotech game highlighting their achievements.</li>
-                            <li>A project that highlights our team's love for video games in an adventure-type game with numerous video games about different topics related to biotech in Scripps Research.</li>
-                            <li>A project that incorporates ML models from datasets for each minigame requiring them, enhancing the user experience.</li>
-                        </ol>
+                        <strong>Description:</strong> Build and upgrade towers to defend your king from waves of enemies! Inspired by Clash Royale, this game is divided into ES6 classes and features a variety of towers and enemies.<br>
+                        <strong>Authors:</strong> Lars, Darsh, Pradyun
                     </p>
-                    <a href="https://prad-coder.github.io/GenomeGamersFrontend/" class="btn btn-primary">Go somewhere</a>
+                    <ul style="font-size: 1rem; margin-bottom: 1rem;">
+                        <li><b>Goal:</b> Defend your king by building and upgrading towers to stop waves of enemies from reaching the end of the path.</li>
+                        <li><b>Placing Towers:</b> Drag a tower from the menu and drop it onto the battlefield (avoid the path and other towers).</li>
+                        <li><b>Coins:</b> Earn coins by defeating enemies. Use coins to build and upgrade towers.</li>
+                        <li><b>Upgrading:</b> Click on a placed tower to upgrade it for increased power (cost increases with each level).</li>
+                        <li><b>Health:</b> If enemies reach the end, you lose health. Game over when health reaches zero.</li>
+                        <li><b>Tips:</b> Different towers have unique abilities. Experiment with placements and upgrades for the best defense!</li>
+                    </ul>
+                    <a href="https://open-coding-society.github.io/Tower_Defense_Frontend/" class="btn btn-primary">Play Tower Defense</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card text-center shadow" style="border-radius: 18px; border: 1.5px solid #0074D9; background: linear-gradient(135deg, #f8fafc 80%, #e3f2fd 100%); margin-bottom: 1.5rem;">
+                    <div class="card-header" style="background: #0074D9; color: #fff; border-top-left-radius: 16px; border-top-right-radius: 16px; font-weight: bold; font-size: 1.2rem;">
+                        About the Authors
+                    </div>
+                    <div class="card-body" style="padding-bottom: 1.2rem;">
+                        <div class="mb-3" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 0.7rem;">
+                            <img src="https://ui-avatars.com/api/?name=Pradyun&background=0074D9&color=fff&rounded=true&size=48" alt="Pradyun" style="margin-bottom: 0.3rem;">
+                            <div><strong>Pradyun</strong> <span class="badge bg-secondary" style="font-size: 0.8em;">Sophomore</span></div>
+                            <div class="text-muted" style="font-size: 0.95em;">🧠 Backend & Economy Manager</div>
+                            <div style="font-size: 0.92em;">Focuses on API, data, and game balance.</div>
+                        </div>
+                        <div class="mb-3" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 0.7rem;">
+                            <img src="https://ui-avatars.com/api/?name=Darsh&background=0074D9&color=fff&rounded=true&size=48" alt="Darsh" style="margin-bottom: 0.3rem;">
+                            <div><strong>Darsh</strong> <span class="badge bg-secondary" style="font-size: 0.8em;">Junior</span></div>
+                            <div class="text-muted" style="font-size: 0.95em;">💥 Game Logic Engineer</div>
+                            <div style="font-size: 0.92em;">Specializes in core mechanics and enemy AI.</div>
+                        </div>
+                        <div>
+                            <img src="https://ui-avatars.com/api/?name=Lars&background=0074D9&color=fff&rounded=true&size=48" alt="Lars" style="margin-bottom: 0.3rem;">
+                            <div><strong>Lars</strong> <span class="badge bg-secondary" style="font-size: 0.8em;">Senior</span></div>
+                            <div class="text-muted" style="font-size: 0.95em;">🎨 Frontend Designer & UI Dev</div>
+                            <div style="font-size: 0.92em;">Leads UI/UX and visual polish for the project.</div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="background: #f1f8ff; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; font-size: 0.95em;">
+                        <span style="color: #0074D9;">Team Tower Defense</span>
                     </div>
                 </div>
             </div>
