@@ -1,148 +1,107 @@
-# README
+# 🏰 Tower Defense
 
-> This is a project to support AP Computer Science Principles (CSP) as well as a UC articulated Data Structures course. It was crafted iteratively starting in 2020 to the present time.  The primary purposes are ...
+A browser-based tower defense game inspired by **Clash Royale**, built using modern JavaScript (ES6). Players must defend their king by strategically placing and upgrading towers to stop waves of enemies. With real-time gameplay, an interactive UI, and persistent score tracking via API, this project delivers both fun and technical depth.
 
-- Used as starter code for student projects for `AP CSP 1 and 2` and `Data Structures 1` curriculum.
-- Used to teach key principles in learning the Python Flask programming environment.
-- Used as a backend server to service API's in a frontend-to-backend pipeline. Review the `api` folder in the project for endpoints.
-- Contains a minimal frontend, mostly to support Administrative functionality using the `templates` folder and `Jinja2` to define UIs.
-- Contains SQL database code in the `model` folder to introduce concepts of persistent data and storage.  Perisistence folder is `instance/volumes` for generated SQLite3 db.
-- Contains capabilities for deployment and has been used with AWS, Ubuntu, Docker, docker-compose, and Nginx to `deploy a WSGI server`.
-- Contains APIs to support `user authentication and cookies`, a great deal of which was contributed by Aiden Wu a former student in CSP.  
+---
 
-## Flask Portfolio Starter
+## ✨ Features
 
-Use this project to create a Flask Server.
+- 🧠 **Strategic Gameplay** – Build and upgrade various towers to fend off increasingly difficult enemies.
+- ⚔️ **Enemy Waves** – Unique enemy types with distinct movement and health behaviors.
+- 💰 **Resource System** – Earn coins and points for kills to unlock more upgrades.
+- 🌐 **API Integration** – Tracks high scores and gameplay data across sessions.
+- 🖱️ **Interactive UI** – Click-based controls for tower placement and upgrades.
+- 🧩 **Modular Design** – Clean, scalable architecture using ES6 classes.
 
-- GitHub link: [flask_2025](https://github.com/nighthawkcoders/flask_2025)
-- The runtime link is published under the About on the GitHub link.
-- `Create a template from this repository` if you plan on making GitHub changes.
+---
 
-## The conventional way to get started
+## 🚀 Getting Started
 
-> Quick steps that can be used with MacOS, WSL Ubuntu, or Ubuntu; this uses Python 3.9 or later as a prerequisite.
+To run the game locally:
 
-- Open a Terminal, clone a project and `cd` into the project directory.  Use a `different link` and name for `name` for clone to match your repo.
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/Open-Coding-Society/Tower_Defense_Frontend.git
+   cd Tower_Defense_Frontend
+   ```
 
-```bash
-mkdir -p ~/nighthawk; cd ~/nighthawk
+2. **Start a local server**  
+   You can use a simple HTTP server like:
 
-git clone https://github.com/nighthawkcoders/flask_2025.git
+   ```bash
+   # Using Python 3
+   python -m http.server
+   ```
 
-cd flask_2025
-```
+3. **Open your browser**  
+   Visit `http://localhost:8000` (or the appropriate port) to start playing.
 
-- Install python dependencies for Flask, etc.
+> 🔧 No build steps or external dependencies required—just open in the browser!
 
-```bash
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
+---
 
-### Open project in VSCode
+## 🎮 Usage
 
-- Prepare VSCode and run
-  - From Terminal run VSCode
+- Use the mouse to place towers on valid spots.
+- Towers will automatically target enemies within range.
+- Earn coins from defeated enemies to purchase more towers or upgrades.
+- Defend your king—don’t let enemies reach the base!
 
-  ```bash
-  code .
-  ```
+---
 
-  - Open Setting: Ctrl-Shift P or Cmd-Shift
-    - Search Python: Select Interpreter.
-    - Match interpreter to `which python` from terminal.
-    - Shourd be ./venv/bin/python
+## 🤝 Contributing
 
-  - From Extensions Marketplace install `SQLite3 Editor`
-    - Open and view SQL database file `instance/volumes/user_management.db`
+Contributions are welcome! Feel free to:
 
-  - Make a local `.env` file in root of project to contain your secret passwords
+- Suggest new enemy or tower types
+- Optimize gameplay or UI components
+- Refactor core game logic
 
-  ```shell
-  # User Defaults
-  ADMIN_USER='toby'
-  ADMIN_PASSWORD='123Toby!'
-  DEFAULT_USER='hop'
-  DEFAULT_PASSWORD='123Hop!'
-  ```
+Please open an issue or fork and submit a pull request with clear descriptions.
 
-  - Make the database and init data.
-  
-  ```bash
-  ./scripts/db_init.py
-  ```
+---
 
-  - Explore newly created SQL database
-    - Navigate too instance/volumes
-    - View/open `user_management.db`
-    - Loook at `Users` table in viewer
+## 🧭 Issues / Roadmap
 
-  - Run the Project
-    - Select/open `main.py` in VSCode
-    - Start with Play button
-      - Play button sub option contains Debug
-    - Click on loop back address in terminal to launch
-      - Output window will contain page to launch http://127.0.0.1:8087
-    - Login using your secrets
+We use **GitHub Issues** to:
 
-## Idea
+- Log bugs or edge cases
+- Propose and track new features
+- Discuss architectural changes or refactors
 
-### Visual thoughts
+---
 
-> The Starter code should be fun and practical.
+## ⚙️ Technical Design Overview
 
-- Organize with Bootstrap menu
-- Add some color and fun through VANTA Visuals (birds, halo, solar, net)
-- Show some practical and fun links (HREFs) like Twitter, Git, Youtube
-- Build a Sample Page (Table)
-- Show the project-specific links (HREFs) per page
+This project exemplifies a modular, object-oriented approach to frontend game development, as seen in `index.md`:
 
-### Files and Directories in this Project
+### 🏗️ Architecture Specifics
 
-The key files and directories in this project are in this online article.
+- **Object-Oriented JavaScript**: Core game logic is encapsulated in ES6 classes (`Game`, `Enemy`, `Tower`, `Projectile`, `Upgrades`, `Points`), promoting maintainability and extensibility.
+- **Dynamic DOM Manipulation**: All game elements (towers, enemies, projectiles, UI overlays) are created, updated, and removed dynamically using JavaScript, allowing for real-time interactivity and visual feedback.
+- **Modular Asset/Data Management**: Game configuration (tower stats, images, path points, constants) is managed in centralized arrays and objects, making it easy to update or extend game content.
+- **Backend API Integration**: The game integrates with a backend Python API for persistent points tracking, using asynchronous fetch calls and a dedicated `Points` class for state management.
+- **Separation of Concerns**: UI rendering, game logic, and configuration are clearly separated. CSS is scoped within the page, and all gameplay logic is handled in a single script module.
+- **Responsive UI Components**: UI elements such as health bars, coin/point displays, and popups are modular and update in response to game state changes.
+- **Extensible Upgrade System**: The `Upgrades` class and tower-level logic allow for scalable addition of new tower abilities and upgrade paths.
 
-[Flask Anatomy](https://nighthawkcoders.github.io/portfolio_2025/flask-anatomy)
+### 🧩 Key Components in This Project
 
-Or read this entire series of articles starting with the Intro, Anatomy, and more ...
+- `index.md`: Main entry point, containing all game logic, UI, and integration code.
+- `assets/js/api/config.js`: Provides configuration for backend API endpoints and fetch options.
+- **Dynamic HTML/CSS**: All game visuals and controls are rendered and styled at runtime, with minimal reliance on static HTML.
 
-[Flask Intro](https://nighthawkcoders.github.io/portfolio_2025/flask-intro)
+### 🧠 Design Principles in Practice
 
-### Implementation Summary
+- **Encapsulation**: Each game entity manages its own state and DOM representation.
+- **Reusability**: Shared logic (e.g., projectiles, upgrades) is abstracted for use across multiple tower/enemy types.
+- **Scalability**: Adding new towers, enemies, or features requires minimal changes to existing code due to modular design.
+- **Developer Experience**: Clear separation of configuration, logic, and UI makes the codebase approachable for further development and educational use.
 
-#### July 2024
+---
 
-> Updates for 2024 too 2025 school year.  Primary addition is a fully functional backend for JWT login system.
+## 🙌 Acknowledgments
 
-- Full support for JWT cookies
-- The API's for CRUD methods
-- The model definition User Class and related tables
-- SQLite and RDS support
-- Minimal Server side UI in Jinja2
-
-#### July 2023
-
-> Updates for 2023 to 2024 school year.
-
-- Update README with File Descriptions (anatomy)
-- Add JWT and add security features using a SQLite user database
-- Add migrate.sh to support sqlite schema and data upgrade
-
-#### January 2023
-
-> This project focuses on being a Python backend server.  Intentions are to only have simple UIs an perhaps some Administrative UIs.
-
-#### September 2021
-
-> Basic UI elements were implemented showing server side Flask with Jinja 2 capabilities.
-
-- The Project entry point is main.py, this enables the Flask Web App and provides the capability to render templates (HTML files)
-- The main.py is the  Web Server Gateway Interface, essentially it contains an HTTP route and HTML file relationship.  The Python code constructs WSGI relationships for index, kangaroos, walruses, and hawkers.
-- The project structure contains many directories and files.  The template directory (containing HTML files) and static directory (containing JS files) are common standards for HTML coding.  Static files can be pictures and videos, in this project they are mostly javascript backgrounds.
-- WSGI templates: index.html, kangaroos.html, ... are aligned with routes in main.py.
-- Other templates support WSGI templates.  The base.html template contains common Head, Style, Body, and Script definitions.  WSGI templates often "include" or "extend" these templates.  This is a way to reuse code.
-- The VANTA javascript statics (backgrounds) are shown and defaulted in base.html (birds) but are block-replaced as needed in other templates (solar, net, ...)
-- The Bootstrap Navbar code is in navbar.html. The base.html code includes navbar.html.  The WSGI html files extend base.html files.  This is a process of management and correlation to optimize code management.  For instance, if the menu changes discovery of navbar.html is easy, one change reflects on all WSGI html files.
-- Jinja2 variables usage is to isolate data and allow redefinitions of attributes in templates.  Observe "{% set variable = %}" syntax for definition and "{{ variable }}" for reference.
-- The base.html uses a combination of Bootstrap grid styling and custom CSS styling.  Grid styling in observation with the "<Col-3>" markers.  A Bootstrap Grid has a width of 12, thus four "Col-3" markers could fit on a Grid row.
-- A key purpose of this project is to embed links to other content.  The "href=" definition embeds hyperlinks into the rendered HTML.  The base.html file shows usage of "href={{github}}", the "{{github}}" is a Jinja2 variable.  Jinja2 variables are pre-processed by Python, a variable swap with value, before being sent to the browser.
+- Inspired by the mechanics and visual style of **Clash Royale**
+- Built by members of the **Open Coding Society**
+- Thanks to open-source contributors and browser game developers for foundational tools and techniques
